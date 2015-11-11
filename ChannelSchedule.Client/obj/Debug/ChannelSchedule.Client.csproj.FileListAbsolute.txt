@@ -1,0 +1,6 @@
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\bin\ChannelSchedule.Client.dll.config
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\bin\ChannelSchedule.Client.dll
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\bin\ChannelSchedule.Client.pdb
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\obj\Debug\ChannelSchedule.Client.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\obj\Debug\ChannelSchedule.Client.dll
+D:\Projects\GitHub\ChannelSchedule\ChannelSchedule.Client\obj\Debug\ChannelSchedule.Client.pdb
