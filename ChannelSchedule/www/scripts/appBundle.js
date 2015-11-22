@@ -2,6 +2,291 @@ var JustinCredible;
 (function (JustinCredible) {
     var SampleApp;
     (function (SampleApp) {
+        var Controllers;
+        (function (Controllers) {
+            /**
+             * This is the base controller that all other controllers should utilize.
+             *
+             * It handles saving a reference to the Angular scope, newing up the given
+             * model object type, and injecting the view model and controller onto the
+             * scope object for use in views.
+             *
+             * T - The parameter type for the model.
+             */
+            var BaseController = (function () {
+                function BaseController(scope, ModelType) {
+                    // Uncomment for debugging view events.
+                    //console.log("ctor()  " + this.constructor["ID"]);
+                    // Save a reference to Angular's scope object.
+                    this.scope = scope;
+                    // Create the view model.
+                    this.viewModel = new ModelType();
+                    /* tslint:disable:no-string-literal */
+                    // Push the view model onto the scope so it can be
+                    // referenced from the template/views.
+                    this.scope["viewModel"] = this.viewModel;
+                    // Push the controller onto the scope so it can be
+                    // used to reference events for controls etc.
+                    this.scope["controller"] = this;
+                    /* tslint:enable:no-string-literal */
+                    // Subscribe to various events.
+                    this.scope.$on("$ionicView.loaded", _.bind(this.view_loaded, this));
+                    this.scope.$on("$ionicView.enter", _.bind(this.view_enter, this));
+                    this.scope.$on("$ionicView.leave", _.bind(this.view_leave, this));
+                    this.scope.$on("$ionicView.beforeEnter", _.bind(this.view_beforeEnter, this));
+                    this.scope.$on("$ionicView.beforeLeave", _.bind(this.view_beforeLeave, this));
+                    this.scope.$on("$ionicView.afterEnter", _.bind(this.view_afterEnter, this));
+                    this.scope.$on("$ionicView.afterLeave", _.bind(this.view_afterLeave, this));
+                    this.scope.$on("$ionicView.unloaded", _.bind(this.view_unloaded, this));
+                    this.scope.$on("$destroy", _.bind(this.destroy, this));
+                }
+                /**
+                 * Ionic's view event: $ionicView.loaded
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_loaded = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_loaded " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.enter
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_enter = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_enter " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.leave
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_leave = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_leave " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.beforeEnter
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_beforeEnter = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_beforeEnter " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.beforeLeave
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_beforeLeave = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_beforeLeave " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.afterEnter
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_afterEnter = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_afterEnter " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.afterLeave
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_afterLeave = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_afterLeave " + this.constructor["ID"]);
+                };
+                /**
+                 * Ionic's view event: $ionicView.unloaded
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.view_unloaded = function (event, eventArgs) {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("view_unloaded " + this.constructor["ID"]);
+                };
+                /**
+                 * Fired when this controller is destroyed. Can be used for clean-up etc.
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseController.prototype.destroy = function () {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                    // Uncomment for debugging view events.
+                    // console.log("destroy " + this.constructor["ID"]);
+                };
+                return BaseController;
+            })();
+            Controllers.BaseController = BaseController;
+        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
+        var Controllers;
+        (function (Controllers) {
+            /**
+             * This is the base controller that all other controllers should utilize.
+             *
+             * It handles saving a reference to the Angular scope, newing up the given
+             * model object type, and injecting the view model and controller onto the
+             * scope object for use in views.
+             *
+             * V - The type of the view model that this controller will utilize.
+             * D - The type of data object that will be passed in when this dialog is opened.
+             * R - The type of the data object that will be returned when this dialog is closed.
+             */
+            var BaseDialogController = (function (_super) {
+                __extends(BaseDialogController, _super);
+                function BaseDialogController(scope, ViewModelType, dialogId) {
+                    _super.call(this, scope, ViewModelType);
+                    this.dialogId = dialogId;
+                    this.scope.$on("modal.shown", _.bind(this.modal_shown, this));
+                    this.scope.$on("modal.hidden", _.bind(this.modal_hidden, this));
+                }
+                //#region Events
+                BaseDialogController.prototype.modal_shown = function (ngEvent, instance) {
+                    // Only respond to modal.shown events for this dialog.
+                    if (this.dialogId !== instance.dialogId) {
+                        return;
+                    }
+                    // Save off a reference to the Ionic modal instance.
+                    this.modalInstance = instance;
+                    // Hold a reference to the data object that was passed in when opening the dialog.
+                    this.data = instance.dialogData;
+                    // Call the dialog shown event which descendants can override.
+                    this.dialog_shown();
+                };
+                BaseDialogController.prototype.modal_hidden = function (eventArgs, instance) {
+                    // Only respond to modal.hidden events for this dialog.
+                    if (this.dialogId !== instance.dialogId) {
+                        return;
+                    }
+                    // Call the dialog hidden event which descendants can override.
+                    this.dialog_hidden();
+                };
+                //#endregion
+                //#region Protected Methods
+                /**
+                 * Used to get the data object that this was opened with.
+                 */
+                BaseDialogController.prototype.getData = function () {
+                    return this.data;
+                };
+                /**
+                 * Used to close the dialog.
+                 *
+                 * @param result The return result value for this dialog.
+                 */
+                BaseDialogController.prototype.close = function (result) {
+                    this.modalInstance.result = result;
+                    this.modalInstance.hide();
+                    this.modalInstance.remove();
+                };
+                //#endregion
+                //#region Override-able Methods
+                /**
+                 * Fired when this dialog is shown.
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseDialogController.prototype.dialog_shown = function () {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                };
+                /**
+                 * Fired when this dialog is hidden.
+                 *
+                 * Can be overridden by implementing controllers.
+                 */
+                BaseDialogController.prototype.dialog_hidden = function () {
+                    /* tslint:disable:no-empty */
+                    /* tslint:enable:no-empty */
+                };
+                return BaseDialogController;
+            })(Controllers.BaseController);
+            Controllers.BaseDialogController = BaseDialogController;
+        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
+        var Directives;
+        (function (Directives) {
+            /**
+             * This is the base directive that all other directives for elements should utilize.
+             *
+             * It handles saving references to the various objects in its constructor.
+             *
+             * T - The parameter type for the scope.
+             */
+            var BaseElementDirective = (function () {
+                function BaseElementDirective() {
+                }
+                BaseElementDirective.prototype.initialize = function () {
+                    throw new Error("Directives that extend BaseElementDirective should implement their own initialize method.");
+                };
+                BaseElementDirective.prototype.render = function () {
+                    throw new Error("Directives that extend BaseElementDirective should implement their own render method.");
+                };
+                /**
+                 * A flag that can be used to identify element directives that use this
+                 * class as their base class.
+                 */
+                BaseElementDirective.__BaseElementDirective = true;
+                return BaseElementDirective;
+            })();
+            Directives.BaseElementDirective = BaseElementDirective;
+        })(Directives = SampleApp.Directives || (SampleApp.Directives = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+/**
+ * This file exists to control the order in which compiled TypeScript files are concatenated
+ * into the resulting appBundle.js file. While all *.ts files could be listed here, we don't
+ * need to list them all since the tsc compiler will automatically traverse the directory tree.
+ * Here we can list base components that are needed by other components (eg base classes) that
+ * must be parsed before the dependent class.
+ */
+/// <reference path="Controllers/BaseController.ts" />
+/// <reference path="Controllers/Dialogs/BaseDialogController.ts" />
+/// <reference path="Directives/BaseElementDirective.ts" />
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
         var Application;
         (function (Application) {
             //#region Variables
@@ -548,158 +833,6 @@ var JustinCredible;
     (function (SampleApp) {
         var Controllers;
         (function (Controllers) {
-            /**
-             * This is the base controller that all other controllers should utilize.
-             *
-             * It handles saving a reference to the Angular scope, newing up the given
-             * model object type, and injecting the view model and controller onto the
-             * scope object for use in views.
-             *
-             * T - The parameter type for the model.
-             */
-            var BaseController = (function () {
-                function BaseController(scope, ModelType) {
-                    // Uncomment for debugging view events.
-                    //console.log("ctor()  " + this.constructor["ID"]);
-                    // Save a reference to Angular's scope object.
-                    this.scope = scope;
-                    // Create the view model.
-                    this.viewModel = new ModelType();
-                    /* tslint:disable:no-string-literal */
-                    // Push the view model onto the scope so it can be
-                    // referenced from the template/views.
-                    this.scope["viewModel"] = this.viewModel;
-                    // Push the controller onto the scope so it can be
-                    // used to reference events for controls etc.
-                    this.scope["controller"] = this;
-                    /* tslint:enable:no-string-literal */
-                    // Subscribe to various events.
-                    this.scope.$on("$ionicView.loaded", _.bind(this.view_loaded, this));
-                    this.scope.$on("$ionicView.enter", _.bind(this.view_enter, this));
-                    this.scope.$on("$ionicView.leave", _.bind(this.view_leave, this));
-                    this.scope.$on("$ionicView.beforeEnter", _.bind(this.view_beforeEnter, this));
-                    this.scope.$on("$ionicView.beforeLeave", _.bind(this.view_beforeLeave, this));
-                    this.scope.$on("$ionicView.afterEnter", _.bind(this.view_afterEnter, this));
-                    this.scope.$on("$ionicView.afterLeave", _.bind(this.view_afterLeave, this));
-                    this.scope.$on("$ionicView.unloaded", _.bind(this.view_unloaded, this));
-                    this.scope.$on("$destroy", _.bind(this.destroy, this));
-                }
-                /**
-                 * Ionic's view event: $ionicView.loaded
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_loaded = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_loaded " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.enter
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_enter = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_enter " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.leave
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_leave = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_leave " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.beforeEnter
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_beforeEnter = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_beforeEnter " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.beforeLeave
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_beforeLeave = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_beforeLeave " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.afterEnter
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_afterEnter = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_afterEnter " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.afterLeave
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_afterLeave = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_afterLeave " + this.constructor["ID"]);
-                };
-                /**
-                 * Ionic's view event: $ionicView.unloaded
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.view_unloaded = function (event, eventArgs) {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("view_unloaded " + this.constructor["ID"]);
-                };
-                /**
-                 * Fired when this controller is destroyed. Can be used for clean-up etc.
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseController.prototype.destroy = function () {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                    // Uncomment for debugging view events.
-                    // console.log("destroy " + this.constructor["ID"]);
-                };
-                return BaseController;
-            })();
-            Controllers.BaseController = BaseController;
-        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
-    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
-})(JustinCredible || (JustinCredible = {}));
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var JustinCredible;
-(function (JustinCredible) {
-    var SampleApp;
-    (function (SampleApp) {
-        var Controllers;
-        (function (Controllers) {
             var CategoryController = (function (_super) {
                 __extends(CategoryController, _super);
                 function CategoryController($scope, $stateParams) {
@@ -834,96 +967,6 @@ var ChannelSchedule;
         })(Controllers = HydridApp.Controllers || (HydridApp.Controllers = {}));
     })(HydridApp = ChannelSchedule.HydridApp || (ChannelSchedule.HydridApp = {}));
 })(ChannelSchedule || (ChannelSchedule = {}));
-var JustinCredible;
-(function (JustinCredible) {
-    var SampleApp;
-    (function (SampleApp) {
-        var Controllers;
-        (function (Controllers) {
-            /**
-             * This is the base controller that all other controllers should utilize.
-             *
-             * It handles saving a reference to the Angular scope, newing up the given
-             * model object type, and injecting the view model and controller onto the
-             * scope object for use in views.
-             *
-             * V - The type of the view model that this controller will utilize.
-             * D - The type of data object that will be passed in when this dialog is opened.
-             * R - The type of the data object that will be returned when this dialog is closed.
-             */
-            var BaseDialogController = (function (_super) {
-                __extends(BaseDialogController, _super);
-                function BaseDialogController(scope, ViewModelType, dialogId) {
-                    _super.call(this, scope, ViewModelType);
-                    this.dialogId = dialogId;
-                    this.scope.$on("modal.shown", _.bind(this.modal_shown, this));
-                    this.scope.$on("modal.hidden", _.bind(this.modal_hidden, this));
-                }
-                //#region Events
-                BaseDialogController.prototype.modal_shown = function (ngEvent, instance) {
-                    // Only respond to modal.shown events for this dialog.
-                    if (this.dialogId !== instance.dialogId) {
-                        return;
-                    }
-                    // Save off a reference to the Ionic modal instance.
-                    this.modalInstance = instance;
-                    // Hold a reference to the data object that was passed in when opening the dialog.
-                    this.data = instance.dialogData;
-                    // Call the dialog shown event which descendants can override.
-                    this.dialog_shown();
-                };
-                BaseDialogController.prototype.modal_hidden = function (eventArgs, instance) {
-                    // Only respond to modal.hidden events for this dialog.
-                    if (this.dialogId !== instance.dialogId) {
-                        return;
-                    }
-                    // Call the dialog hidden event which descendants can override.
-                    this.dialog_hidden();
-                };
-                //#endregion
-                //#region Protected Methods
-                /**
-                 * Used to get the data object that this was opened with.
-                 */
-                BaseDialogController.prototype.getData = function () {
-                    return this.data;
-                };
-                /**
-                 * Used to close the dialog.
-                 *
-                 * @param result The return result value for this dialog.
-                 */
-                BaseDialogController.prototype.close = function (result) {
-                    this.modalInstance.result = result;
-                    this.modalInstance.hide();
-                    this.modalInstance.remove();
-                };
-                //#endregion
-                //#region Override-able Methods
-                /**
-                 * Fired when this dialog is shown.
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseDialogController.prototype.dialog_shown = function () {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                };
-                /**
-                 * Fired when this dialog is hidden.
-                 *
-                 * Can be overridden by implementing controllers.
-                 */
-                BaseDialogController.prototype.dialog_hidden = function () {
-                    /* tslint:disable:no-empty */
-                    /* tslint:enable:no-empty */
-                };
-                return BaseDialogController;
-            })(Controllers.BaseController);
-            Controllers.BaseDialogController = BaseDialogController;
-        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
-    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
-})(JustinCredible || (JustinCredible = {}));
 var JustinCredible;
 (function (JustinCredible) {
     var SampleApp;
@@ -2275,39 +2318,6 @@ var JustinCredible;
     (function (SampleApp) {
         var Directives;
         (function (Directives) {
-            /**
-             * This is the base directive that all other directives for elements should utilize.
-             *
-             * It handles saving references to the various objects in its constructor.
-             *
-             * T - The parameter type for the scope.
-             */
-            var BaseElementDirective = (function () {
-                function BaseElementDirective() {
-                }
-                BaseElementDirective.prototype.initialize = function () {
-                    throw new Error("Directives that extend BaseElementDirective should implement their own initialize method.");
-                };
-                BaseElementDirective.prototype.render = function () {
-                    throw new Error("Directives that extend BaseElementDirective should implement their own render method.");
-                };
-                /**
-                 * A flag that can be used to identify element directives that use this
-                 * class as their base class.
-                 */
-                BaseElementDirective.__BaseElementDirective = true;
-                return BaseElementDirective;
-            })();
-            Directives.BaseElementDirective = BaseElementDirective;
-        })(Directives = SampleApp.Directives || (SampleApp.Directives = {}));
-    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
-})(JustinCredible || (JustinCredible = {}));
-var JustinCredible;
-(function (JustinCredible) {
-    var SampleApp;
-    (function (SampleApp) {
-        var Directives;
-        (function (Directives) {
             //#endregion
             /**
              * A simple element for showing a large icon centered, with optional text below it.
@@ -2686,6 +2696,15 @@ var JustinCredible;
                     views: {
                         "root-view": {
                             templateUrl: "templates/Blank.html"
+                        }
+                    }
+                });
+                $stateProvider.state("app.mainform", {
+                    url: "/mainform",
+                    views: {
+                        "root-view": {
+                            templateUrl: "templates/MainForm.html",
+                            controller: SampleApp.Controllers.MainFormController.ID
                         }
                     }
                 });
@@ -6368,14 +6387,4 @@ var JustinCredible;
         })(ViewModels = SampleApp.ViewModels || (SampleApp.ViewModels = {}));
     })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
 })(JustinCredible || (JustinCredible = {}));
-/**
- * This file exists to control the order in which compiled TypeScript files are concatenated
- * into the resulting appBundle.js file. While all *.ts files could be listed here, we don't
- * need to list them all since the tsc compiler will automatically traverse the directory tree.
- * Here we can list base components that are needed by other components (eg base classes) that
- * must be parsed before the dependent class.
- */
-/// <reference path="Controllers/BaseController.ts" />
-/// <reference path="Controllers/Dialogs/BaseDialogController.ts" />
-/// <reference path="Directives/BaseElementDirective.ts" />
 //# sourceMappingURL=appBundle.js.map

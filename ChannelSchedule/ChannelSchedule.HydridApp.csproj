@@ -29,9 +29,6 @@
     <Content Include="www\img\mike.png" />
     <Content Include="www\img\perry.png" />
     <Content Include="www\index.html" />
-    <Content Include="www\js\app.js" />
-    <Content Include="www\js\controllers.js" />
-    <Content Include="www\js\services.js" />
     <Content Include="www\lib\ionic\css\ionic.css" />
     <Content Include="www\lib\ionic\css\ionic.min.css" />
     <Content Include="www\lib\ionic\fonts\ionicons.svg" />
@@ -51,11 +48,23 @@
     <Content Include="www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="www\lib\ionic\js\ionic.js" />
     <Content Include="www\lib\ionic\js\ionic.min.js" />
-    <Content Include="www\templates\chat-detail.html" />
-    <Content Include="www\templates\tab-account.html" />
-    <Content Include="www\templates\tab-chats.html" />
-    <Content Include="www\templates\tab-dash.html" />
-    <Content Include="www\templates\tabs.html" />
+    <Content Include="www\templates\Blank.html" />
+    <Content Include="www\templates\Category.html" />
+    <Content Include="www\templates\Dialogs\Pin-Entry.html" />
+    <Content Include="www\templates\Dialogs\Reorder-Categories.html" />
+    <Content Include="www\templates\MainForm.html" />
+    <Content Include="www\templates\Onboarding\Onboarding-Register.html" />
+    <Content Include="www\templates\Onboarding\Onboarding-Share.html" />
+    <Content Include="www\templates\Onboarding\Onboarding-Splash.html" />
+    <Content Include="www\templates\Root.html" />
+    <Content Include="www\templates\Settings\About.html" />
+    <Content Include="www\templates\Settings\Cloud-Sync.html" />
+    <Content Include="www\templates\Settings\Configure-Pin.html" />
+    <Content Include="www\templates\Settings\Developer.html" />
+    <Content Include="www\templates\Settings\Log-Entry.html" />
+    <Content Include="www\templates\Settings\Log-Filter-Menu.html" />
+    <Content Include="www\templates\Settings\Logs-List.html" />
+    <Content Include="www\templates\Settings\Settings-List.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="www\lib\ionic\fonts\ionicons.eot" />
@@ -209,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="scripts\Models\Channels\" />
+    <Folder Include="www\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="scripts\Controllers\Dialogs\BaseDialogController.js.map" />

@@ -27,6 +27,16 @@ module JustinCredible.SampleApp {
                 }
             });
 
+            $stateProvider.state("app.mainform", {
+                url: "/mainform",
+                views: {
+                    "root-view": {
+                        templateUrl: "templates/MainForm.html",
+                        controller: Controllers.MainFormController.ID
+                    }
+                }
+            });
+
             // A shared view used between categories, assigned a number via the route URL (categoryNumber).
             $stateProvider.state("app.category", {
                 url: "/category/:categoryNumber",
