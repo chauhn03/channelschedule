@@ -1,0 +1,5 @@
+d:\Projects\GitHub\ChannelSchedule\ChannelSchedule\obj\Debug\ChannelSchedule.HydridApp.csprojResolveAssemblyReference.cache
+d:\Projects\GitHub\ChannelSchedule\ChannelSchedule\bin\ChannelSchedule.HydridApp.dll
+d:\Projects\GitHub\ChannelSchedule\ChannelSchedule\bin\ChannelSchedule.HydridApp.pdb
+d:\Projects\GitHub\ChannelSchedule\ChannelSchedule\obj\Debug\ChannelSchedule.HydridApp.dll
+d:\Projects\GitHub\ChannelSchedule\ChannelSchedule\obj\Debug\ChannelSchedule.HydridApp.pdb

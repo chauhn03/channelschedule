@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{E2E70562-2F6E-4502-BB90-DBD864EAB39F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="scripts\Controllers\Dialogs\BaseDialogController.js" />
+    <Content Include="www\css\ionic.app.css" />
+    <Content Include="www\css\ionic.app.min.css" />
+    <Content Include="www\css\style.css" />
+    <Content Include="www\img\adam.jpg" />
+    <Content Include="www\img\ben.png" />
+    <Content Include="www\img\ionic.png" />
+    <Content Include="www\img\max.png" />
+    <Content Include="www\img\mike.png" />
+    <Content Include="www\img\perry.png" />
+    <Content Include="www\index.html" />
+    <Content Include="www\js\app.js" />
+    <Content Include="www\js\controllers.js" />
+    <Content Include="www\js\services.js" />
+    <Content Include="www\lib\ionic\css\ionic.css" />
+    <Content Include="www\lib\ionic\css\ionic.min.css" />
+    <Content Include="www\lib\ionic\fonts\ionicons.svg" />
+    <Content Include="www\lib\ionic\js\angular-ui\angular-ui-router.js" />
+    <Content Include="www\lib\ionic\js\angular-ui\angular-ui-router.min.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-animate.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-animate.min.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-resource.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-resource.min.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-sanitize.js" />
+    <Content Include="www\lib\ionic\js\angular\angular-sanitize.min.js" />
+    <Content Include="www\lib\ionic\js\angular\angular.js" />
+    <Content Include="www\lib\ionic\js\angular\angular.min.js" />
+    <Content Include="www\lib\ionic\js\ionic-angular.js" />
+    <Content Include="www\lib\ionic\js\ionic-angular.min.js" />
+    <Content Include="www\lib\ionic\js\ionic.bundle.js" />
+    <Content Include="www\lib\ionic\js\ionic.bundle.min.js" />
+    <Content Include="www\lib\ionic\js\ionic.js" />
+    <Content Include="www\lib\ionic\js\ionic.min.js" />
+    <Content Include="www\templates\chat-detail.html" />
+    <Content Include="www\templates\tab-account.html" />
+    <Content Include="www\templates\tab-chats.html" />
+    <Content Include="www\templates\tab-dash.html" />
+    <Content Include="www\templates\tabs.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www\lib\ionic\fonts\ionicons.eot" />
+    <Content Include="www\lib\ionic\fonts\ionicons.ttf" />
+    <Content Include="www\lib\ionic\fonts\ionicons.woff" />
+    <Content Include="www\lib\ionic\scss\ionic.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\ionicons.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-font.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-icons.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-variables.scss" />
+    <Content Include="www\lib\ionic\scss\_action-sheet.scss" />
+    <Content Include="www\lib\ionic\scss\_animations.scss" />
+    <Content Include="www\lib\ionic\scss\_backdrop.scss" />
+    <Content Include="www\lib\ionic\scss\_badge.scss" />
+    <Content Include="www\lib\ionic\scss\_bar.scss" />
+    <Content Include="www\lib\ionic\scss\_button-bar.scss" />
+    <Content Include="www\lib\ionic\scss\_button.scss" />
+    <Content Include="www\lib\ionic\scss\_checkbox.scss" />
+    <Content Include="www\lib\ionic\scss\_form.scss" />
+    <Content Include="www\lib\ionic\scss\_grid.scss" />
+    <Content Include="www\lib\ionic\scss\_items.scss" />
+    <Content Include="www\lib\ionic\scss\_list.scss" />
+    <Content Include="www\lib\ionic\scss\_loading.scss" />
+    <Content Include="www\lib\ionic\scss\_menu.scss" />
+    <Content Include="www\lib\ionic\scss\_mixins.scss" />
+    <Content Include="www\lib\ionic\scss\_modal.scss" />
+    <Content Include="www\lib\ionic\scss\_platform.scss" />
+    <Content Include="www\lib\ionic\scss\_popover.scss" />
+    <Content Include="www\lib\ionic\scss\_popup.scss" />
+    <Content Include="www\lib\ionic\scss\_progress.scss" />
+    <Content Include="www\lib\ionic\scss\_radio.scss" />
+    <Content Include="www\lib\ionic\scss\_range.scss" />
+    <Content Include="www\lib\ionic\scss\_refresher.scss" />
+    <Content Include="www\lib\ionic\scss\_reset.scss" />
+    <Content Include="www\lib\ionic\scss\_scaffolding.scss" />
+    <Content Include="www\lib\ionic\scss\_select.scss" />
+    <Content Include="www\lib\ionic\scss\_slide-box.scss" />
+    <Content Include="www\lib\ionic\scss\_spinner.scss" />
+    <Content Include="www\lib\ionic\scss\_tabs.scss" />
+    <Content Include="www\lib\ionic\scss\_toggle.scss" />
+    <Content Include="www\lib\ionic\scss\_transitions.scss" />
+    <Content Include="www\lib\ionic\scss\_type.scss" />
+    <Content Include="www\lib\ionic\scss\_util.scss" />
+    <Content Include="www\lib\ionic\scss\_variables.scss" />
+    <Content Include="www\lib\ionic\version.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="scripts\Application.ts" />
+    <TypeScriptCompile Include="scripts\Constants.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\BaseController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\CategoryController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Channels\FavoriteChannelsController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Channels\MainFormController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Channels\SchduleController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Channels\SideBarController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Dialogs\BaseDialogController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Dialogs\PinEntryController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Dialogs\ReorderCategoriesController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Onboarding\OnboardingRegisterController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Onboarding\OnboardingShareController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Onboarding\OnboardingSplashController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\RootController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\AboutController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\CloudSyncController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\ConfigurePinController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\DeveloperController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\LogEntryController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\LogsListController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Settings\SettingsListController.ts" />
+    <TypeScriptCompile Include="scripts\Directives\BaseElementDirective.ts" />
+    <TypeScriptCompile Include="scripts\Directives\IconPanelDirective.ts" />
+    <TypeScriptCompile Include="scripts\Directives\OnLoadDirective.ts" />
+    <TypeScriptCompile Include="scripts\Filters\ThousandsFilter.ts" />
+    <TypeScriptCompile Include="scripts\Models\Dialogs\DialogOptions.ts" />
+    <TypeScriptCompile Include="scripts\Models\Dialogs\PinEntryDialogModel.ts" />
+    <TypeScriptCompile Include="scripts\Models\Dialogs\PinEntryDialogResultModel.ts" />
+    <TypeScriptCompile Include="scripts\Models\LogEntry.ts" />
+    <TypeScriptCompile Include="scripts\Models\LogLevel.ts" />
+    <TypeScriptCompile Include="scripts\Models\Misc.ts" />
+    <TypeScriptCompile Include="scripts\RouteConfig.ts" />
+    <TypeScriptCompile Include="scripts\Services\Configuration.ts" />
+    <TypeScriptCompile Include="scripts\Services\FileUtilities.ts" />
+    <TypeScriptCompile Include="scripts\Services\HttpInterceptor.ts" />
+    <TypeScriptCompile Include="scripts\Services\Logger.ts" />
+    <TypeScriptCompile Include="scripts\Services\MockHttpApis.ts" />
+    <TypeScriptCompile Include="scripts\Services\MockPlatformApis.ts" />
+    <TypeScriptCompile Include="scripts\Services\Plugins.ts" />
+    <TypeScriptCompile Include="scripts\Services\Preferences.ts" />
+    <TypeScriptCompile Include="scripts\Services\UiHelper.ts" />
+    <TypeScriptCompile Include="scripts\Services\Utilities.ts" />
+    <TypeScriptCompile Include="scripts\typings\angular-ui-router\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova-ionic\cordova-ionic.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova-ionic\plugins\keyboard.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\cordova.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\BatteryStatus.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Camera.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Contacts.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Device.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\DeviceMotion.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\DeviceOrientation.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Dialogs.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\FileSystem.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\FileTransfer.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Globalization.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\InAppBrowser.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Media.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\MediaCapture.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\NetworkInformation.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Push.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Splashscreen.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\StatusBar.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\Vibration.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\cordova\plugins\WebSQL.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\custom\CordovaPlugins.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\custom\DataTypes.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\custom\extensions.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\custom\Interfaces.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\custom\ionic.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\lodash\lodash.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\nprogress\NProgress.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\urijs\URIjs.d.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\CategoryItemViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\CategoryViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Channels\MainFormViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Dialogs\PinEntryViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Dialogs\ReorderCategoriesViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\EmptyViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Onboarding\OnboardingRegisterViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\RootViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\AboutViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\CloudSyncViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\ConfigurePinViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\DeveloperViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\LogEntryViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\LogsListViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Settings\SettingsListViewModel.ts" />
+    <TypeScriptCompile Include="scripts\_references.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts\Models\Channels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\Controllers\Dialogs\BaseDialogController.js.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ChannelSchedule.HydridApp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13805</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13805/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptOutFile>www\scripts\appBundle.js</TypeScriptOutFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>
