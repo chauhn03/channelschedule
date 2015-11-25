@@ -1,6 +1,6 @@
-﻿module ChannelSchedule.HydridApp.Controllers {
+﻿module JustinCredible.SampleApp.Controllers {
 
-    export class FavoriteChannelsController {
+    export class FavoriteChannelsController extends BaseController<ViewModels.MainFormViewModel> {
         public static ID = "FavoriteChannelsController";
 
         public static get $inject(): string[] {
@@ -11,6 +11,7 @@
 
         constructor(
             $scope: ng.IScope) {
+            super($scope, ViewModels.MainFormViewModel);
         }
     }
 } 

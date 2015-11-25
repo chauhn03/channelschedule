@@ -50,6 +50,7 @@
     <Content Include="www\lib\ionic\js\ionic.min.js" />
     <Content Include="www\templates\Blank.html" />
     <Content Include="www\templates\Category.html" />
+    <Content Include="www\templates\Channels\FavoriteChannels.html" />
     <Content Include="www\templates\Dialogs\Pin-Entry.html" />
     <Content Include="www\templates\Dialogs\Reorder-Categories.html" />
     <Content Include="www\templates\MainForm.html" />
@@ -138,6 +139,7 @@
     <TypeScriptCompile Include="scripts\Directives\IconPanelDirective.ts" />
     <TypeScriptCompile Include="scripts\Directives\OnLoadDirective.ts" />
     <TypeScriptCompile Include="scripts\Filters\ThousandsFilter.ts" />
+    <TypeScriptCompile Include="scripts\Models\Channels\Program.ts" />
     <TypeScriptCompile Include="scripts\Models\Dialogs\DialogOptions.ts" />
     <TypeScriptCompile Include="scripts\Models\Dialogs\PinEntryDialogModel.ts" />
     <TypeScriptCompile Include="scripts\Models\Dialogs\PinEntryDialogResultModel.ts" />
@@ -217,7 +219,6 @@
     <Content Include="scripts\tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="scripts\Models\Channels\" />
     <Folder Include="www\js\" />
   </ItemGroup>
   <ItemGroup>

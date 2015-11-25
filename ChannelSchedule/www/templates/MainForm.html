@@ -5,7 +5,7 @@
             <a class="tab-item" href="#/app/mainform">
                 Đang Chiếu
             </a>
-            <a class="tab-item" href="#/app/category/2">
+            <a class="tab-item" href="#/app/favorite">
                 Kênh Ưu Thích
             </a>
             <a class="tab-item" href="#/app/category/3">
@@ -18,10 +18,30 @@
         <button menu-toggle="left" class="button icon ion-navicon phone-both-tablet-portrait"></button>
     </ion-nav-buttons>
 
-    <ion-content class="has-header" padding="true">
-
+    <ion-content class="has-header">
         <!--<icon-panel icon="ion-ios-pricetags-outline" text="MainForm"></icon-panel>-->
-        Main form
+        <ul class="list">
+            <li class="item" ng-repeat="program in viewModel.Programs">                
+                <div class="row">
+                    <div class="col-90">
+                        <h2 class="title">{{program.Program}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-80">
+                        <span>
+                            {{program.Channel}}
+                        </span>
+                    </div>
+
+                    <div class="col">
+                        <span>
+                            {{program.FromTime.getTime() | date:'hh:mm'}} - {{program.ToTime.getTime() | date:'hh:mm'}}
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
 
     </ion-content>
 

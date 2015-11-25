@@ -865,14 +865,16 @@ var JustinCredible;
         })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
     })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
 })(JustinCredible || (JustinCredible = {}));
-var ChannelSchedule;
-(function (ChannelSchedule) {
-    var HydridApp;
-    (function (HydridApp) {
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
         var Controllers;
         (function (Controllers) {
-            var FavoriteChannelsController = (function () {
+            var FavoriteChannelsController = (function (_super) {
+                __extends(FavoriteChannelsController, _super);
                 function FavoriteChannelsController($scope) {
+                    _super.call(this, $scope, SampleApp.ViewModels.MainFormViewModel);
                 }
                 Object.defineProperty(FavoriteChannelsController, "$inject", {
                     get: function () {
@@ -885,11 +887,11 @@ var ChannelSchedule;
                 });
                 FavoriteChannelsController.ID = "FavoriteChannelsController";
                 return FavoriteChannelsController;
-            })();
+            })(Controllers.BaseController);
             Controllers.FavoriteChannelsController = FavoriteChannelsController;
-        })(Controllers = HydridApp.Controllers || (HydridApp.Controllers = {}));
-    })(HydridApp = ChannelSchedule.HydridApp || (ChannelSchedule.HydridApp = {}));
-})(ChannelSchedule || (ChannelSchedule = {}));
+        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
 var JustinCredible;
 (function (JustinCredible) {
     var SampleApp;
@@ -2565,6 +2567,71 @@ var JustinCredible;
     (function (SampleApp) {
         var Models;
         (function (Models) {
+            var Program = (function () {
+                function Program() {
+                }
+                Object.defineProperty(Program.prototype, "Id", {
+                    get: function () {
+                        return this._id;
+                    },
+                    set: function (value) {
+                        this._id = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Program.prototype, "Program", {
+                    get: function () {
+                        return this._program;
+                    },
+                    set: function (value) {
+                        this._program = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Program.prototype, "Channel", {
+                    get: function () {
+                        return this._channel;
+                    },
+                    set: function (value) {
+                        this._channel = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Program.prototype, "FromTime", {
+                    get: function () {
+                        return this._fromTime;
+                    },
+                    set: function (value) {
+                        this._fromTime = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Program.prototype, "ToTime", {
+                    get: function () {
+                        return this._toTime;
+                    },
+                    set: function (value) {
+                        this._toTime = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Program;
+            })();
+            Models.Program = Program;
+        })(Models = SampleApp.Models || (SampleApp.Models = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
+        var Models;
+        (function (Models) {
             /**
              * Used to specify options for a dialog.
              * For use with UiHelper.openDialog().
@@ -2705,6 +2772,15 @@ var JustinCredible;
                         "root-view": {
                             templateUrl: "templates/MainForm.html",
                             controller: SampleApp.Controllers.MainFormController.ID
+                        }
+                    }
+                });
+                $stateProvider.state("app.favorite", {
+                    url: "/favorite",
+                    views: {
+                        "root-view": {
+                            templateUrl: "templates/Channels/FavoriteChannels.html",
+                            controller: SampleApp.Controllers.FavoriteChannelsController.ID
                         }
                     }
                 });
@@ -6194,7 +6270,44 @@ var JustinCredible;
         (function (ViewModels) {
             var MainFormViewModel = (function () {
                 function MainFormViewModel() {
+                    this.createPrograms();
                 }
+                MainFormViewModel.prototype.createPrograms = function () {
+                    this.Programs = [];
+                    var program;
+                    var fromDate = new Date();
+                    var toDate = new Date();
+                    for (var index = 0; index < 10; index++) {
+                        program = new SampleApp.Models.Program();
+                        var tempIndex = (index + 1);
+                        program.Id = tempIndex;
+                        program.Channel = "SCTV" + tempIndex;
+                        program.Program = "Program " + tempIndex;
+                        var time = fromDate.getHours();
+                        fromDate.setHours(time + 1);
+                        toDate.setHours(time + tempIndex + 1);
+                        program.FromTime = fromDate;
+                        program.ToTime = toDate;
+                        this.Programs[index] = program;
+                    }
+                };
+                Object.defineProperty(MainFormViewModel.prototype, "Name", {
+                    get: function () {
+                        return "MainFormViewModel";
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(MainFormViewModel.prototype, "Programs", {
+                    get: function () {
+                        return this._programs;
+                    },
+                    set: function (programs) {
+                        this._programs = programs;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 return MainFormViewModel;
             })();
             ViewModels.MainFormViewModel = MainFormViewModel;
