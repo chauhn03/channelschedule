@@ -1412,6 +1412,7 @@ var JustinCredible;
                     this.scope.$on(SampleApp.Constants.Events.HTTP_UNKNOWN_ERROR, _.bind(this.http_unknownError, this));
                     this.scope.$on(SampleApp.Constants.Events.HTTP_ERROR, _.bind(this.http_error, this));
                     this.viewModel.categories = this.Utilities.categories;
+                    //this.viewModel.settings = 
                 };
                 //#endregion
                 //#region Event Handlers
@@ -1441,16 +1442,6 @@ var JustinCredible;
                  */
                 RootController.prototype.http_error = function (event, response) {
                     this.Plugins.toast.showLongBottom("An error has occurred; please try again.");
-                };
-                //#endregion
-                //#region Controller Methods
-                RootController.prototype.reorder_click = function () {
-                    var _this = this;
-                    this.UiHelper.showDialog(Controllers.ReorderCategoriesController.ID).then(function () {
-                        // After the re-order dialog is closed, re-populate the category
-                        // items since they may have been re-ordered.
-                        _this.viewModel.categories = _this.Utilities.categories;
-                    });
                 };
                 //#region Injection
                 RootController.ID = "RootController";
@@ -6187,20 +6178,10 @@ var JustinCredible;
                     get: function () {
                         // Define the default set of categories.
                         var categories = [
-                            new SampleApp.ViewModels.CategoryItemViewModel("Category 1", "#/app/category/1", "ios-pricetags-outline", 0),
-                            new SampleApp.ViewModels.CategoryItemViewModel("Category 2", "#/app/category/2", "ios-pricetags-outline", 1),
-                            new SampleApp.ViewModels.CategoryItemViewModel("Category 3", "#/app/category/3", "ios-pricetags-outline", 2),
-                            new SampleApp.ViewModels.CategoryItemViewModel("Category 4", "#/app/category/4", "ios-pricetags-outline", 3)
+                            new SampleApp.ViewModels.CategoryItemViewModel("SCTV", "#/app/category/1", "ios-pricetags-outline", 0),
+                            new SampleApp.ViewModels.CategoryItemViewModel("HCTV", "#/app/category/2", "ios-pricetags-outline", 1),
+                            new SampleApp.ViewModels.CategoryItemViewModel("VTC", "#/app/category/3", "ios-pricetags-outline", 2)
                         ];
-                        // If the user has ordering preferences, then apply their custom ordering.
-                        if (this.Preferences.categoryOrder) {
-                            this.Preferences.categoryOrder.forEach(function (categoryName, index) {
-                                var categoryItem = _.where(categories, { name: categoryName })[0];
-                                if (categoryItem) {
-                                    categoryItem.order = index;
-                                }
-                            });
-                        }
                         // Ensure the list is sorted by the order.
                         categories = _.sortBy(categories, "order");
                         return categories;

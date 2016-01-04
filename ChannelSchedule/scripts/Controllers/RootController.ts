@@ -3,7 +3,6 @@
     export class RootController extends BaseController<ViewModels.RootViewModel> {
 
         //#region Injection
-
         public static ID = "RootController";
 
         public static get $inject(): string[] {
@@ -55,6 +54,7 @@
             this.scope.$on(Constants.Events.HTTP_ERROR, _.bind(this.http_error, this));
 
             this.viewModel.categories = this.Utilities.categories;
+            //this.viewModel.settings = 
         }
 
         //#endregion
@@ -95,18 +95,6 @@
          */
         private http_error(event: ng.IAngularEvent, response: ng.IHttpPromiseCallbackArg<any>): void {
             this.Plugins.toast.showLongBottom("An error has occurred; please try again.");
-        }
-
-        //#endregion
-
-        //#region Controller Methods
-
-        protected reorder_click() {
-            this.UiHelper.showDialog(ReorderCategoriesController.ID).then(() => {
-                // After the re-order dialog is closed, re-populate the category
-                // items since they may have been re-ordered.
-                this.viewModel.categories = this.Utilities.categories;
-            });
         }
 
         //#endregion

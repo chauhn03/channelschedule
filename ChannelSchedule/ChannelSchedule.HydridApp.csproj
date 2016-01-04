@@ -48,8 +48,10 @@
     <Content Include="www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="www\lib\ionic\js\ionic.js" />
     <Content Include="www\lib\ionic\js\ionic.min.js" />
+    <Content Include="www\templates\Bars\sidebar.html" />
     <Content Include="www\templates\Blank.html" />
     <Content Include="www\templates\Category.html" />
+    <Content Include="www\templates\Channels\ChannelDetails.html" />
     <Content Include="www\templates\Channels\FavoriteChannels.html" />
     <Content Include="www\templates\Dialogs\Pin-Entry.html" />
     <Content Include="www\templates\Dialogs\Reorder-Categories.html" />
