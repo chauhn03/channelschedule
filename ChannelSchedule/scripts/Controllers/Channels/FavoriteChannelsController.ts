@@ -3,15 +3,21 @@
     export class FavoriteChannelsController extends BaseController<ViewModels.MainFormViewModel> {
         public static ID = "FavoriteChannelsController";
 
+        test: string = "FavoriteChannels";
         public static get $inject(): string[] {
             return [
-                "$scope"
+                "$scope",
+                "$state"
             ];
         }
 
         constructor(
-            $scope: ng.IScope) {
-            super($scope, ViewModels.MainFormViewModel);
+            $scope: ng.IScope,private $state: ng.ui.IStateService) {
+            super($scope, ViewModels.MainFormViewModel);            
+        }        
+
+        navigateToChannelSchedule() {            
+            this.$state.go("app.channeldetail");
         }
     }
 } 

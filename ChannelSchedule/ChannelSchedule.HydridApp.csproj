@@ -121,7 +121,7 @@
     <TypeScriptCompile Include="scripts\Controllers\CategoryController.ts" />
     <TypeScriptCompile Include="scripts\Controllers\Channels\FavoriteChannelsController.ts" />
     <TypeScriptCompile Include="scripts\Controllers\Channels\MainFormController.ts" />
-    <TypeScriptCompile Include="scripts\Controllers\Channels\SchduleController.ts" />
+    <TypeScriptCompile Include="scripts\Controllers\Channels\ScheduleController.ts" />
     <TypeScriptCompile Include="scripts\Controllers\Channels\SideBarController.ts" />
     <TypeScriptCompile Include="scripts\Controllers\Dialogs\BaseDialogController.ts" />
     <TypeScriptCompile Include="scripts\Controllers\Dialogs\PinEntryController.ts" />
@@ -141,6 +141,7 @@
     <TypeScriptCompile Include="scripts\Directives\IconPanelDirective.ts" />
     <TypeScriptCompile Include="scripts\Directives\OnLoadDirective.ts" />
     <TypeScriptCompile Include="scripts\Filters\ThousandsFilter.ts" />
+    <TypeScriptCompile Include="scripts\Models\Channels\Channel.ts" />
     <TypeScriptCompile Include="scripts\Models\Channels\Program.ts" />
     <TypeScriptCompile Include="scripts\Models\Dialogs\DialogOptions.ts" />
     <TypeScriptCompile Include="scripts\Models\Dialogs\PinEntryDialogModel.ts" />
@@ -202,6 +203,7 @@
     <TypeScriptCompile Include="scripts\typings\urijs\URIjs.d.ts" />
     <TypeScriptCompile Include="scripts\ViewModels\CategoryItemViewModel.ts" />
     <TypeScriptCompile Include="scripts\ViewModels\CategoryViewModel.ts" />
+    <TypeScriptCompile Include="scripts\ViewModels\Channels\ChannelDetailViewModel.ts" />
     <TypeScriptCompile Include="scripts\ViewModels\Channels\MainFormViewModel.ts" />
     <TypeScriptCompile Include="scripts\ViewModels\Dialogs\PinEntryViewModel.ts" />
     <TypeScriptCompile Include="scripts\ViewModels\Dialogs\ReorderCategoriesViewModel.ts" />

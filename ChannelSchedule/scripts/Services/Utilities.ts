@@ -678,9 +678,26 @@
 
             // Define the default set of categories.
             var categories = [
-                new ViewModels.CategoryItemViewModel("SCTV", "#/app/category/1", "ios-pricetags-outline", 0),
+                new ViewModels.CategoryItemViewModel("SCTV", "#/app/mainform", "ios-pricetags-outline", 0),
                 new ViewModels.CategoryItemViewModel("HCTV", "#/app/category/2", "ios-pricetags-outline", 1),
                 new ViewModels.CategoryItemViewModel("VTC", "#/app/category/3", "ios-pricetags-outline", 2)                
+            ];            
+
+            // Ensure the list is sorted by the order.
+            categories = _.sortBy(categories, "order");
+
+            return categories;
+        }
+
+        public get settings(): ViewModels.CategoryItemViewModel[] {
+            // Define the default set of categories.
+            var categories = [
+                new ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/category/1", "ios-pricetags-outline", 0),
+                new ViewModels.CategoryItemViewModel("Tivi", "#/app/category/2", "ios-pricetags-outline", 1),
+                new ViewModels.CategoryItemViewModel("Cài Đặt", "#/app/category/3", "ios-pricetags-outline", 2),
+                new ViewModels.CategoryItemViewModel("Bộ Lưu Kênh", "#/app/category/3", "ios-pricetags-outline", 3),
+                new ViewModels.CategoryItemViewModel("Thông Tin Sản Phẩm", "#/app/category/3", "ios-pricetags-outline", 4),
+                new ViewModels.CategoryItemViewModel("Cập Nhật", "#/app/category/3", "ios-pricetags-outline", 5)                
             ];            
 
             // Ensure the list is sorted by the order.

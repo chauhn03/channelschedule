@@ -47,6 +47,16 @@ module JustinCredible.SampleApp {
                 }
             });
 
+            $stateProvider.state("app.channeldetail", {
+                url: "/channeldetail",
+                views: {
+                    "root-view": {
+                        templateUrl: "templates/Channels/ChannelDetails.html",
+                        controller: Controllers.ScheduleController.ID
+                    }
+                }
+            });
+
             // A shared view used between categories, assigned a number via the route URL (categoryNumber).
             $stateProvider.state("app.category", {
                 url: "/category/:categoryNumber",

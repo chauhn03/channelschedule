@@ -555,11 +555,12 @@ var JustinCredible;
              * The parameters to this method are automatically determined by Angular's dependency injection based
              * on the name of each parameter.
              */
-            function angular_initialize($rootScope, $location, $ionicHistory, $ionicPlatform, Plugins, Utilities, UiHelper, Preferences, Configuration, MockHttpApis, Logger) {
+            function angular_initialize($rootScope, $location, $state, $ionicHistory, $ionicPlatform, Plugins, Utilities, UiHelper, Preferences, Configuration, MockHttpApis, Logger) {
                 // Save off references to the modules for use within this application module.
                 services = {
                     $rootScope: $rootScope,
                     $location: $location,
+                    $state: $state,
                     $ionicHistory: $ionicHistory,
                     Plugins: Plugins,
                     Utilities: Utilities,
@@ -873,18 +874,24 @@ var JustinCredible;
         (function (Controllers) {
             var FavoriteChannelsController = (function (_super) {
                 __extends(FavoriteChannelsController, _super);
-                function FavoriteChannelsController($scope) {
+                function FavoriteChannelsController($scope, $state) {
                     _super.call(this, $scope, SampleApp.ViewModels.MainFormViewModel);
+                    this.$state = $state;
+                    this.test = "FavoriteChannels";
                 }
                 Object.defineProperty(FavoriteChannelsController, "$inject", {
                     get: function () {
                         return [
-                            "$scope"
+                            "$scope",
+                            "$state"
                         ];
                     },
                     enumerable: true,
                     configurable: true
                 });
+                FavoriteChannelsController.prototype.navigateToChannelSchedule = function () {
+                    this.$state.go("app.channeldetail");
+                };
                 FavoriteChannelsController.ID = "FavoriteChannelsController";
                 return FavoriteChannelsController;
             })(Controllers.BaseController);
@@ -902,6 +909,7 @@ var JustinCredible;
                 __extends(MainFormController, _super);
                 function MainFormController($scope) {
                     _super.call(this, $scope, SampleApp.ViewModels.MainFormViewModel);
+                    this.test = "FavoriteChannels";
                 }
                 Object.defineProperty(MainFormController, "$inject", {
                     get: function () {
@@ -919,16 +927,18 @@ var JustinCredible;
         })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
     })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
 })(JustinCredible || (JustinCredible = {}));
-var ChannelSchedule;
-(function (ChannelSchedule) {
-    var HydridApp;
-    (function (HydridApp) {
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
         var Controllers;
         (function (Controllers) {
-            var SchduleController = (function () {
-                function SchduleController($scope) {
+            var ScheduleController = (function (_super) {
+                __extends(ScheduleController, _super);
+                function ScheduleController($scope) {
+                    _super.call(this, $scope, SampleApp.ViewModels.ChannelDetailViewModel);
                 }
-                Object.defineProperty(SchduleController, "$inject", {
+                Object.defineProperty(ScheduleController, "$inject", {
                     get: function () {
                         return [
                             "$scope"
@@ -937,13 +947,13 @@ var ChannelSchedule;
                     enumerable: true,
                     configurable: true
                 });
-                SchduleController.ID = "SchduleController";
-                return SchduleController;
-            })();
-            Controllers.SchduleController = SchduleController;
-        })(Controllers = HydridApp.Controllers || (HydridApp.Controllers = {}));
-    })(HydridApp = ChannelSchedule.HydridApp || (ChannelSchedule.HydridApp = {}));
-})(ChannelSchedule || (ChannelSchedule = {}));
+                ScheduleController.ID = "ScheduleController";
+                return ScheduleController;
+            })(Controllers.BaseController);
+            Controllers.ScheduleController = ScheduleController;
+        })(Controllers = SampleApp.Controllers || (SampleApp.Controllers = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
 var ChannelSchedule;
 (function (ChannelSchedule) {
     var HydridApp;
@@ -1412,7 +1422,7 @@ var JustinCredible;
                     this.scope.$on(SampleApp.Constants.Events.HTTP_UNKNOWN_ERROR, _.bind(this.http_unknownError, this));
                     this.scope.$on(SampleApp.Constants.Events.HTTP_ERROR, _.bind(this.http_error, this));
                     this.viewModel.categories = this.Utilities.categories;
-                    //this.viewModel.settings = 
+                    this.viewModel.settings = this.Utilities.settings;
                 };
                 //#endregion
                 //#region Event Handlers
@@ -2558,6 +2568,51 @@ var JustinCredible;
     (function (SampleApp) {
         var Models;
         (function (Models) {
+            var Channel = (function () {
+                function Channel() {
+                }
+                Object.defineProperty(Channel.prototype, "Id", {
+                    get: function () {
+                        return this._id;
+                    },
+                    set: function (value) {
+                        this._id = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Channel.prototype, "Name", {
+                    get: function () {
+                        return this._name;
+                    },
+                    set: function (value) {
+                        this._name = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Channel.prototype, "Programs", {
+                    get: function () {
+                        return this._programs;
+                    },
+                    set: function (value) {
+                        this._programs = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Channel;
+            })();
+            Models.Channel = Channel;
+        })(Models = SampleApp.Models || (SampleApp.Models = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
+        var Models;
+        (function (Models) {
             var Program = (function () {
                 function Program() {
                 }
@@ -2772,6 +2827,15 @@ var JustinCredible;
                         "root-view": {
                             templateUrl: "templates/Channels/FavoriteChannels.html",
                             controller: SampleApp.Controllers.FavoriteChannelsController.ID
+                        }
+                    }
+                });
+                $stateProvider.state("app.channeldetail", {
+                    url: "/channeldetail",
+                    views: {
+                        "root-view": {
+                            templateUrl: "templates/Channels/ChannelDetails.html",
+                            controller: SampleApp.Controllers.ScheduleController.ID
                         }
                     }
                 });
@@ -6178,9 +6242,27 @@ var JustinCredible;
                     get: function () {
                         // Define the default set of categories.
                         var categories = [
-                            new SampleApp.ViewModels.CategoryItemViewModel("SCTV", "#/app/category/1", "ios-pricetags-outline", 0),
+                            new SampleApp.ViewModels.CategoryItemViewModel("SCTV", "#/app/mainform", "ios-pricetags-outline", 0),
                             new SampleApp.ViewModels.CategoryItemViewModel("HCTV", "#/app/category/2", "ios-pricetags-outline", 1),
                             new SampleApp.ViewModels.CategoryItemViewModel("VTC", "#/app/category/3", "ios-pricetags-outline", 2)
+                        ];
+                        // Ensure the list is sorted by the order.
+                        categories = _.sortBy(categories, "order");
+                        return categories;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Utilities.prototype, "settings", {
+                    get: function () {
+                        // Define the default set of categories.
+                        var categories = [
+                            new SampleApp.ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/category/1", "ios-pricetags-outline", 0),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Tivi", "#/app/category/2", "ios-pricetags-outline", 1),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Cài Đặt", "#/app/category/3", "ios-pricetags-outline", 2),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Bộ Lưu Kênh", "#/app/category/3", "ios-pricetags-outline", 3),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Thông Tin Sản Phẩm", "#/app/category/3", "ios-pricetags-outline", 4),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Cập Nhật", "#/app/category/3", "ios-pricetags-outline", 5)
                         ];
                         // Ensure the list is sorted by the order.
                         categories = _.sortBy(categories, "order");
@@ -6240,6 +6322,63 @@ var JustinCredible;
                 return CategoryViewModel;
             })();
             ViewModels.CategoryViewModel = CategoryViewModel;
+        })(ViewModels = SampleApp.ViewModels || (SampleApp.ViewModels = {}));
+    })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
+})(JustinCredible || (JustinCredible = {}));
+var JustinCredible;
+(function (JustinCredible) {
+    var SampleApp;
+    (function (SampleApp) {
+        var ViewModels;
+        (function (ViewModels) {
+            var ChannelDetailViewModel = (function () {
+                function ChannelDetailViewModel() {
+                    this.Channel = new SampleApp.Models.Channel();
+                    this.Channel.Id = 1;
+                    this.Channel.Name = "SCTV1";
+                    this.Channel.Programs = this.createPrograms();
+                    this.createPrograms();
+                }
+                ChannelDetailViewModel.prototype.createPrograms = function () {
+                    var programs = [];
+                    var program;
+                    var fromDate = new Date();
+                    var toDate = new Date();
+                    for (var index = 0; index < 10; index++) {
+                        program = new SampleApp.Models.Program();
+                        var tempIndex = (index + 1);
+                        program.Id = tempIndex;
+                        program.Channel = "SCTV" + tempIndex;
+                        program.Program = "Program " + tempIndex;
+                        var time = fromDate.getHours();
+                        fromDate.setHours(time + 1);
+                        toDate.setHours(time + tempIndex + 1);
+                        program.FromTime = fromDate;
+                        program.ToTime = toDate;
+                        programs[index] = program;
+                    }
+                    return programs;
+                };
+                Object.defineProperty(ChannelDetailViewModel.prototype, "Name", {
+                    get: function () {
+                        return "MainFormViewModel";
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ChannelDetailViewModel.prototype, "Channel", {
+                    get: function () {
+                        return this._channel;
+                    },
+                    set: function (channel) {
+                        this._channel = channel;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ChannelDetailViewModel;
+            })();
+            ViewModels.ChannelDetailViewModel = ChannelDetailViewModel;
         })(ViewModels = SampleApp.ViewModels || (SampleApp.ViewModels = {}));
     })(SampleApp = JustinCredible.SampleApp || (JustinCredible.SampleApp = {}));
 })(JustinCredible || (JustinCredible = {}));
