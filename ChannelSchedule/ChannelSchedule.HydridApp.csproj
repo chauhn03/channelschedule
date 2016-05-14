@@ -51,7 +51,9 @@
     <Content Include="www\templates\Bars\sidebar.html" />
     <Content Include="www\templates\Blank.html" />
     <Content Include="www\templates\Category.html" />
+    <Content Include="www\templates\Channels\AddFavoriteChannel.html" />
     <Content Include="www\templates\Channels\ChannelDetails.html" />
+    <Content Include="www\templates\Channels\DashboardFavoriteChannels.html" />
     <Content Include="www\templates\Channels\FavoriteChannels.html" />
     <Content Include="www\templates\Dialogs\Pin-Entry.html" />
     <Content Include="www\templates\Dialogs\Reorder-Categories.html" />

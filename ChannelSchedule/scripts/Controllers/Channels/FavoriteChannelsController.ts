@@ -12,12 +12,16 @@
         }
 
         constructor(
-            $scope: ng.IScope,private $state: ng.ui.IStateService) {
-            super($scope, ViewModels.MainFormViewModel);            
-        }        
+            $scope: ng.IScope, private $state: ng.ui.IStateService) {
+            super($scope, ViewModels.MainFormViewModel);
+        }
 
-        navigateToChannelSchedule() {            
+        navigateToChannelSchedule() {
             this.$state.go("app.channeldetail");
+        }
+
+        removeFavoriteChannel(channelId: any) {
+            alert("Remove channel Id: " + channelId);
         }
     }
 } 

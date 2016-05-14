@@ -692,7 +692,7 @@
         public get settings(): ViewModels.CategoryItemViewModel[] {
             // Define the default set of categories.
             var categories = [
-                new ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/category/1", "ios-pricetags-outline", 0),
+                new ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/setting-favorite", "ios-pricetags-outline", 0),
                 new ViewModels.CategoryItemViewModel("Tivi", "#/app/category/2", "ios-pricetags-outline", 1),
                 new ViewModels.CategoryItemViewModel("Cài Đặt", "#/app/category/3", "ios-pricetags-outline", 2),
                 new ViewModels.CategoryItemViewModel("Bộ Lưu Kênh", "#/app/category/3", "ios-pricetags-outline", 3),

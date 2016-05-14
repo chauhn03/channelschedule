@@ -892,6 +892,9 @@ var JustinCredible;
                 FavoriteChannelsController.prototype.navigateToChannelSchedule = function () {
                     this.$state.go("app.channeldetail");
                 };
+                FavoriteChannelsController.prototype.removeFavoriteChannel = function (channelId) {
+                    alert("Remove channel Id: " + channelId);
+                };
                 FavoriteChannelsController.ID = "FavoriteChannelsController";
                 return FavoriteChannelsController;
             })(Controllers.BaseController);
@@ -2825,7 +2828,7 @@ var JustinCredible;
                     url: "/favorite",
                     views: {
                         "root-view": {
-                            templateUrl: "templates/Channels/FavoriteChannels.html",
+                            templateUrl: "templates/Channels/DashboardFavoriteChannels.html",
                             controller: SampleApp.Controllers.FavoriteChannelsController.ID
                         }
                     }
@@ -2836,6 +2839,15 @@ var JustinCredible;
                         "root-view": {
                             templateUrl: "templates/Channels/ChannelDetails.html",
                             controller: SampleApp.Controllers.ScheduleController.ID
+                        }
+                    }
+                });
+                $stateProvider.state("app.setting-favorite", {
+                    url: "/setting-favorite",
+                    views: {
+                        "root-view": {
+                            templateUrl: "templates/Channels/FavoriteChannels.html",
+                            controller: SampleApp.Controllers.FavoriteChannelsController.ID
                         }
                     }
                 });
@@ -6257,7 +6269,7 @@ var JustinCredible;
                     get: function () {
                         // Define the default set of categories.
                         var categories = [
-                            new SampleApp.ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/category/1", "ios-pricetags-outline", 0),
+                            new SampleApp.ViewModels.CategoryItemViewModel("Kênh Yêu Thích", "#/app/setting-favorite", "ios-pricetags-outline", 0),
                             new SampleApp.ViewModels.CategoryItemViewModel("Tivi", "#/app/category/2", "ios-pricetags-outline", 1),
                             new SampleApp.ViewModels.CategoryItemViewModel("Cài Đặt", "#/app/category/3", "ios-pricetags-outline", 2),
                             new SampleApp.ViewModels.CategoryItemViewModel("Bộ Lưu Kênh", "#/app/category/3", "ios-pricetags-outline", 3),

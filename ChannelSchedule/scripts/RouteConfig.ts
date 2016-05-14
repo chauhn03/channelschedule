@@ -41,7 +41,7 @@ module JustinCredible.SampleApp {
                 url: "/favorite",
                 views: {
                     "root-view": {
-                        templateUrl: "templates/Channels/FavoriteChannels.html",
+                        templateUrl: "templates/Channels/DashboardFavoriteChannels.html",
                         controller: Controllers.FavoriteChannelsController.ID
                     }
                 }
@@ -53,6 +53,16 @@ module JustinCredible.SampleApp {
                     "root-view": {
                         templateUrl: "templates/Channels/ChannelDetails.html",
                         controller: Controllers.ScheduleController.ID
+                    }
+                }
+            });
+
+            $stateProvider.state("app.setting-favorite", {
+                url: "/setting-favorite",
+                views: {
+                    "root-view": {
+                        templateUrl: "templates/Channels/FavoriteChannels.html",
+                        controller: Controllers.FavoriteChannelsController.ID
                     }
                 }
             });
