@@ -1,9 +1,33 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
+﻿<ion-view>
 
-</body>
-</html>
+    <ion-nav-title>
+        <div>
+          {{viewModel.Channel.Name}}
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button icon ion-navicon phone-both-tablet-portrait"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header">
+        <ul class="list">
+            <li class="item" ng-repeat="program in viewModel.Channel.Programs">
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <span>
+                                {{program.FromTime.getTime() | date:'hh:mm'}} - {{program.ToTime.getTime() | date:'hh:mm'}}
+                            </span>
+                        </div>       
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="title">{{program.Program}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

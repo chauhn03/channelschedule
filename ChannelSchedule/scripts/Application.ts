@@ -15,6 +15,7 @@ module JustinCredible.SampleApp.Application {
     var services: {
         $rootScope: ng.IRootScopeService,
         $location: ng.ILocationService,
+        $state: ng.ui.IStateService,
         $ionicHistory: any,
         Plugins: Services.Plugins,
         Utilities: Services.Utilities,
@@ -335,6 +336,7 @@ module JustinCredible.SampleApp.Application {
     function angular_initialize(
         $rootScope: ng.IScope,
         $location: ng.ILocationService,
+        $state: ng.ui.IStateService,
         $ionicHistory: any,
         $ionicPlatform: Ionic.IPlatform,
         Plugins: Services.Plugins,
@@ -350,6 +352,7 @@ module JustinCredible.SampleApp.Application {
         services = {
             $rootScope: $rootScope,
             $location: $location,
+            $state: $state,
             $ionicHistory: $ionicHistory,
             Plugins: Plugins,
             Utilities: Utilities,

@@ -19,7 +19,7 @@
             //console.log("ctor()  " + this.constructor["ID"]);
 
             // Save a reference to Angular's scope object.
-            this.scope = scope;
+            this.scope = scope;            
 
             // Create the view model.
             this.viewModel = new ModelType();
