@@ -1,7 +1,7 @@
 ﻿module JustinCredible.SampleApp.Controllers {
 
-    export class MainFormController extends BaseController<ViewModels.MainFormViewModel> {
-        public static ID = "MainFormController";
+    export class ScheduleController extends BaseController<ViewModels.ChannelDetailViewModel>  {
+        public static ID = "ScheduleController";
 
         public static get $inject(): string[] {
             return [
@@ -9,10 +9,9 @@
             ];
         }
 
-        test: string = "FavoriteChannels";
         constructor(
             $scope: ng.IScope) {
-            super($scope, ViewModels.MainFormViewModel);
+            super($scope, ViewModels.ChannelDetailViewModel);    
         }
     }
-}
+} 

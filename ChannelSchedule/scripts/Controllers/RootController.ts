@@ -54,7 +54,7 @@
             this.scope.$on(Constants.Events.HTTP_ERROR, _.bind(this.http_error, this));
 
             this.viewModel.categories = this.Utilities.categories;
-            //this.viewModel.settings = 
+            this.viewModel.settings = this.Utilities.settings;
         }
 
         //#endregion

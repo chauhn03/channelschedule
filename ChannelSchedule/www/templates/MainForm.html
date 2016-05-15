@@ -7,7 +7,7 @@
             </a>
             <a class="tab-item" href="#/app/favorite">
                 Kênh Ưu Thích
-            </a>           
+            </a>
         </div>
     </ion-nav-title>
 
@@ -18,7 +18,7 @@
     <ion-content class="has-header">
         <!--<icon-panel icon="ion-ios-pricetags-outline" text="MainForm"></icon-panel>-->
         <ul class="list">
-            <li class="item" ng-repeat="program in viewModel.Programs">                
+            <li class="item" ng-repeat="program in viewModel.Programs">
                 <div class="row">
                     <div class="col-90">
                         <h2 class="title">{{program.Program}}</h2>
@@ -35,7 +35,7 @@
                         <span>
                             {{program.FromTime.getTime() | date:'hh:mm'}} - {{program.ToTime.getTime() | date:'hh:mm'}}
                         </span>
-                    </div>
+                    </div>                  
                 </div>
             </li>
         </ul>
