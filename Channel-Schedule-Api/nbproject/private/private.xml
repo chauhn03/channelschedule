@@ -6,8 +6,9 @@
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/services/databaseService.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/services/carsService.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/composer.json</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/Client.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/logs/app.log</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/vendor/monolog/monolog/src/Monolog/Handler/AbstractHandler.php</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/routes.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/public/.htaccess</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/public/index.php</file>
         </group>
