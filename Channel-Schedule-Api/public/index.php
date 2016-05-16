@@ -87,8 +87,8 @@ $app->get('/cars/id/{id}', function(Request $request, Response $response){
     }
 });
 
-$app->get("/cart/sctv", function($param) {
-    getSCTVSchedule($param);
+$app->get('/foo/bar', function(Request $request, Response $response){
+    getSCTV();
 });
 // Run app
 $app->run();
