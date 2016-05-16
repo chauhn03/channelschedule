@@ -30,6 +30,7 @@ require __DIR__ . '/../src/routes.php';
 
 require __DIR__. '/../vendor/notorm-master/notorm-master/NotORM.php';
 require __DIR__. '/../src/services/carsService.php';
+require __DIR__. '/../src/Client.php';
 
 $carsService = new Services\Cars();
    $dbhost = 'localhost';
@@ -86,5 +87,8 @@ $app->get('/cars/id/{id}', function(Request $request, Response $response){
     }
 });
 
+$app->get('/foo/bar', function(Request $request, Response $response){
+    getSCTVSchedule();
+});
 // Run app
 $app->run();
