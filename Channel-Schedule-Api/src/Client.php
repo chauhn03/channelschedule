@@ -8,9 +8,25 @@
 
 use GuzzleHttp\Client;
 
-function getSCTVSchedule($param) {
+function getSCTVSchedule() {
     $client = new GuzzleHttp\Client();
     $promise = $client->postAsync("http://www.sctv.com.vn/lich-phat-song.html", [
+        'headers' => [
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip, deflate',
+            'Accept-Language' => 'en-US,en;q=0.8',
+            'Cache-Control' => 'no-cache',
+            'Connection' => 'keep-alive',
+            'Content-Length' => 'Content-Length',
+            'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Cookie' => '_gat=1; __atuvc=5%7C20; __atuvs=5739f2992d5057f1001; _ga=GA1.3.1540978709.1463362280',
+            'Host' => 'www.sctv.com.vn',
+            'Origin' => 'http://www.sctv.com.vn',
+            'Referer' => 'http://www.sctv.com.vn/lich-phat-song.html',
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
+            'X-MicrosoftAjax' => 'Delta=true',
+            'X-Requested-With' => 'XMLHttpRequest',
+        ],
         'form_params' => [
             'ctl00$RadScriptManager1' => 'ctl00$RadScriptManager1|ctl00$ContentPlaceHolder1$ctl00$ctl01$ddlChannel',
             'ctl00_RadScriptManager1_TSM' => ';;System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35:en-US:50b12c66-1dd3-4ebf-87e6-55014086ad94:ea597d4b:b25378d2;Telerik.Web.UI, Version=2012.1.411.35, Culture=neutral, PublicKeyToken=121fae78165ba3d4:en-US:4cad056e-160b-4b85-8751-cc8693e9bcd0:16e4e7cd:ed16cbdc:f7645509:7c926187:8674cba1:b7778d6c:c08e9f8a:a51ee93e:59462f1',
@@ -29,9 +45,10 @@ function getSCTVSchedule($param) {
         ]
     ]);
 
-    $request->then(function($response) {
+    $promise->then(function($response) {
         // This is called when the request succeeded
         echo 'Success: ' . $response->getStatusCode();
+        echo 'Body (getBody()): ' . (string) $response->getBody();
         // Returning a value will forward the value to the next promise
         // in the chain.
         return $response;
@@ -86,8 +103,8 @@ function getSCTV() {
 
     $body = $response->getBody();
 //    echo 'Body: ' . $body;
-    echo 'StatusCode: ' . $response->getStatusCode();
-    echo 'Body (getBody()): ' . (string) $response->getBody();
-    echo 'New Body: (getBody()->getContents()' . (string) $response->getBody()->getContents();
+//    echo 'StatusCode: ' . $response->getStatusCode();
+//    echo 'Body (getBody()): ' . (string) $response->getBody();
+//    echo 'New Body: (getBody()->getContents()' . (string) $response->getBody()->getContents();
     return $response;
 }
