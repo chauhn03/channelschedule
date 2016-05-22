@@ -89,21 +89,46 @@ $app->get('/cars/id/{id}', function(Request $request, Response $response) {
     }
 });
 
+function getElementsByClass(&$parentNode, $tagName, $className) {
+    $nodes= array();
+
+    $childNodeList = $parentNode->getElementsByTagName($tagName);
+    for ($i = 0; $i < $childNodeList->length; $i++) {
+        $temp = $childNodeList->item($i);
+        if (stripos($temp->getAttribute('class'), $className) !== false) {
+            $nodes[]=$temp;
+        }
+    }
+
+    return $nodes;
+}
+
 $app->get('/foo/bar', function(Request $request, Response $response) {
     $response = getSCTV();
-//    $html =  (string)$response->getBody()->getContents();
+    $html =  (string)$response->getBody()->getContents();
     
-//    $divs = extract_tags($html, "<div>");    
-    $html = "<tr><td>a</td></tr>".
-            "<tr><td>b</td></tr>".
-            "<tr><td>c</td></tr>".
-            "<tr><td>d</td></tr>".
-            "<tr><td>e</td></tr>".
-            "<tr><td>f</td></tr>";
-    $divs = getTextBetweenTags($html, "tr");
-    foreach ($divs as $div) {
-        echo "<div>". $div . "</div>";
+    $doc = new DOMDocument();
+    $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">'. $html);
+    $contentNode = $doc->getElementById('ctl00_ContentPlaceHolder1_ctl00_ctl01_RadAjaxPanel2');    
+    $tableScheduleNodes = getElementsByClass($contentNode, 'table', 'table');   
+    $tableScheduleNode = $tableScheduleNodes[0];
+    $tds = $tableScheduleNode->getElementsByTagName('td');
+    foreach ($tds as $td){                
+        echo $td->textContent . '; ';
+        
     }
+//    $divs = extract_tags($html, "<div>");    
+//    $html = "<tr><td>a</td></tr>".
+//            "<tr><td>b</td></tr>".
+//            "<tr><td>c</td></tr>".
+//            "<tr><td>d</td></tr>".
+//            "<tr><td>e</td></tr>".
+//            "<tr><td>f</td></tr>";
+//    $divs = getTextBetweenTags($html, "tr");
+//    foreach ($divs as $div) {
+//        echo "<div>". $div . "</div>";
+//    }
+    
 });
 // Run app
 $app->run();
