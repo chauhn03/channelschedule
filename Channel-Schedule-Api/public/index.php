@@ -34,23 +34,18 @@ require __DIR__ . '/../vendor/notorm-master/notorm-master/NotORM.php';
 require __DIR__ . '/../src/services/carsService.php';
 require __DIR__ . '/../src/Client.php';
 require __DIR__ . '/../src/HTMLExtract.php';
+require __DIR__ . '/../src/models/channel.php';
 
 $carsService = new Services\Cars();
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
-$dbname = 'garage';
+$dbname = 'schedulechannel';
 $dbmethod = 'mysql:dbname=';
 
 $dsn = $dbmethod . $dbname;
 $pdo = new PDO($dsn, $dbuser, $dbpass);
 $db = new NotORM($pdo);
-//$app->get('/hello/{name}', function (Request $request, Response $response) {
-//    global $container;    
-//    $name = $request->getAttribute('name');
-//    $response->getBody->write("Hello, $name");     
-//   return $response;
-//});
 
 $app->get('/cars/{all}', function(Request $request, Response $response) {
     global $db, $carsService;
@@ -103,6 +98,32 @@ function getElementsByClass(&$parentNode, $tagName, $className) {
     return $nodes;
 }
 
+function insertChannel(Channel $data){    
+    global $db;
+    $channels = $db->channels();
+    $channel = array(
+        "Code" => $data->Code,
+        "Name" => $data->Name,
+        "ExternalId" => $data->ExternalId,
+        "ProviderId" => $data->ProviderId
+    );
+    
+    $channels->insert($channel);
+}
+
+function insertChannels($param) {
+    $sctv7 = new Channel();
+    $sctv7->Code = "SCTV7";
+    $sctv7->Name = "SCTV7";
+    $sctv7->ExternalId = 7;
+    $sctv7->ProviderId = 1;
+    insertChannel($sctv7);
+}
+
+$app->get('/channel/insert', function(Request $request, Response $response) {
+    insertChannels(NULL);
+});
+
 $app->get('/foo/bar', function(Request $request, Response $response) {
     $response = getSCTV();
     $html =  (string)$response->getBody()->getContents();
@@ -117,18 +138,6 @@ $app->get('/foo/bar', function(Request $request, Response $response) {
         echo $td->textContent . '; ';
         
     }
-//    $divs = extract_tags($html, "<div>");    
-//    $html = "<tr><td>a</td></tr>".
-//            "<tr><td>b</td></tr>".
-//            "<tr><td>c</td></tr>".
-//            "<tr><td>d</td></tr>".
-//            "<tr><td>e</td></tr>".
-//            "<tr><td>f</td></tr>";
-//    $divs = getTextBetweenTags($html, "tr");
-//    foreach ($divs as $div) {
-//        echo "<div>". $div . "</div>";
-//    }
-    
 });
 // Run app
 $app->run();
