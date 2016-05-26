@@ -35,6 +35,7 @@ require __DIR__ . '/../src/services/carsService.php';
 require __DIR__ . '/../src/Client.php';
 require __DIR__ . '/../src/HTMLExtract.php';
 require __DIR__ . '/../src/models/channel.php';
+require __DIR__ . '/../src/services/channelsService.php';
 
 $carsService = new Services\Cars();
 $dbhost = 'localhost';
@@ -47,96 +48,58 @@ $dsn = $dbmethod . $dbname;
 $pdo = new PDO($dsn, $dbuser, $dbpass);
 $db = new NotORM($pdo);
 
-$app->get('/cars/{all}', function(Request $request, Response $response) {
+$app->get('/channels/{all}', function(Request $request, Response $response) {
     global $db, $carsService;
-//    $cars = $carsService->getCars();
-    foreach ($db->cars() as $car) {
-        $cars[] = array(
-            'id' => $car['id'],
-            'year' => $car['year'],
-            'make' => $car['make'],
-            'model' => $car['model']
-        );
-    }
-
+    $channelsService = new channelsService($db);
+    $channels = $channelsService->getChannels();
     $response->withHeader("Content-Type", "application/json");
-    echo json_encode($cars, JSON_FORCE_OBJECT);
+    echo json_encode($channels, JSON_FORCE_OBJECT);
 });
 
-$app->get('/cars/id/{id}', function(Request $request, Response $response) {
-    global $db;
+$app->get('/channels/get/{id}', function(Request $request, Response $response) {
+    global $db, $carsService;
     $id = $request->getAttribute('id');
-    $response->withHeader("Content-Type", "application/json");
-    $car = $db->cars()->where('id', $id);
 
-    if ($data = $car->fetch()) {
-        echo json_encode(array(
-            'id' => $data['id'],
-            'year' => $data['year'],
-            'make' => $data['make'],
-            'model' => $data['model']
-        ));
-    } else {
-        echo json_encode(array(
-            'status' => false,
-            'message' => "Car ID $id does not exist"
-        ));
-    }
+    $channelsService = new channelsService($db);
+    $channels = $channelsService->getChannel($id);
+    $response->withHeader("Content-Type", "application/json");
+    echo json_encode($channels, JSON_FORCE_OBJECT);
+});
+
+$app->get('/channel/insert', function(Request $request, Response $response) {
+    global $db, $carsService;
+    $channelsService = new channelsService($db);
+    $channelsService->generateChannels();
+    $response->withStatus(200);
+    echo $response->getStatusCode();
 });
 
 function getElementsByClass(&$parentNode, $tagName, $className) {
-    $nodes= array();
+    $nodes = array();
 
     $childNodeList = $parentNode->getElementsByTagName($tagName);
     for ($i = 0; $i < $childNodeList->length; $i++) {
         $temp = $childNodeList->item($i);
         if (stripos($temp->getAttribute('class'), $className) !== false) {
-            $nodes[]=$temp;
+            $nodes[] = $temp;
         }
     }
 
     return $nodes;
 }
 
-function insertChannel(Channel $data){    
-    global $db;
-    $channels = $db->channels();
-    $channel = array(
-        "Code" => $data->Code,
-        "Name" => $data->Name,
-        "ExternalId" => $data->ExternalId,
-        "ProviderId" => $data->ProviderId
-    );
-    
-    $channels->insert($channel);
-}
-
-function insertChannels($param) {
-    $sctv7 = new Channel();
-    $sctv7->Code = "SCTV7";
-    $sctv7->Name = "SCTV7";
-    $sctv7->ExternalId = 7;
-    $sctv7->ProviderId = 1;
-    insertChannel($sctv7);
-}
-
-$app->get('/channel/insert', function(Request $request, Response $response) {
-    insertChannels(NULL);
-});
-
 $app->get('/foo/bar', function(Request $request, Response $response) {
     $response = getSCTV();
-    $html =  (string)$response->getBody()->getContents();
-    
+    $html = (string) $response->getBody()->getContents();
+
     $doc = new DOMDocument();
-    $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">'. $html);
-    $contentNode = $doc->getElementById('ctl00_ContentPlaceHolder1_ctl00_ctl01_RadAjaxPanel2');    
-    $tableScheduleNodes = getElementsByClass($contentNode, 'table', 'table');   
+    $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">' . $html);
+    $contentNode = $doc->getElementById('ctl00_ContentPlaceHolder1_ctl00_ctl01_RadAjaxPanel2');
+    $tableScheduleNodes = getElementsByClass($contentNode, 'table', 'table');
     $tableScheduleNode = $tableScheduleNodes[0];
     $tds = $tableScheduleNode->getElementsByTagName('td');
-    foreach ($tds as $td){                
+    foreach ($tds as $td) {
         echo $td->textContent . '; ';
-        
     }
 });
 // Run app
