@@ -74,23 +74,9 @@ $app->get('/channel/insert', function(Request $request, Response $response) {
     echo $response->getStatusCode();
 });
 
-function getElementsByClass(&$parentNode, $tagName, $className) {
-    $nodes = array();
-
-    $childNodeList = $parentNode->getElementsByTagName($tagName);
-    for ($i = 0; $i < $childNodeList->length; $i++) {
-        $temp = $childNodeList->item($i);
-        if (stripos($temp->getAttribute('class'), $className) !== false) {
-            $nodes[] = $temp;
-        }
-    }
-
-    return $nodes;
-}
-
 $app->get('/foo/bar', function(Request $request, Response $response) {
-    $response = getSCTV();
-    $html = (string) $response->getBody()->getContents();
+    $html = getSCTV(16, '2016-05-26');
+//    $html = (string) $response->getBody()->getContents();
 
     $doc = new DOMDocument();
     $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">' . $html);
