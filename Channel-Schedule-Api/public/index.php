@@ -36,8 +36,9 @@ require __DIR__ . '/../src/Client.php';
 require __DIR__ . '/../src/HTMLExtract.php';
 require __DIR__ . '/../src/models/channel.php';
 require __DIR__ . '/../src/services/channelsService.php';
+require __DIR__ . '/../src/import/iHttpClient.php';
+require __DIR__ . '/../src/import/sctv.php';
 
-$carsService = new Services\Cars();
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
@@ -49,15 +50,16 @@ $pdo = new PDO($dsn, $dbuser, $dbpass);
 $db = new NotORM($pdo);
 
 $app->get('/channels/{all}', function(Request $request, Response $response) {
-    global $db, $carsService;
-    $channelsService = new channelsService($db);
-    $channels = $channelsService->getChannels();
+    global $db;
+//    $channelsService = new channelsService($db);
+    $sctv = new SCTV($db);
+    $channels = $sctv->importSchedule();
     $response->withHeader("Content-Type", "application/json");
     echo json_encode($channels, JSON_FORCE_OBJECT);
 });
 
 $app->get('/channels/get/{id}', function(Request $request, Response $response) {
-    global $db, $carsService;
+    global $db;
     $id = $request->getAttribute('id');
 
     $channelsService = new channelsService($db);
@@ -67,7 +69,7 @@ $app->get('/channels/get/{id}', function(Request $request, Response $response) {
 });
 
 $app->get('/channel/insert', function(Request $request, Response $response) {
-    global $db, $carsService;
+    global $db;
     $channelsService = new channelsService($db);
     $channelsService->generateChannels();
     $response->withStatus(200);

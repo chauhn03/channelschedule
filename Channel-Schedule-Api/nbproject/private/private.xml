@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/services/databaseService.php</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/services/carsService.php</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/composer.json</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/import/sctv.php</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/services/channelsService.php</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/models/channel.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/Client.php</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/logs/app.log</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/routes.php</file>
-            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/public/.htaccess</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/models/schedule.php</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/import/iHttpClient.php</file>
             <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/public/index.php</file>
+            <file>file:/D:/Github/channel-schedule/Channel-Schedule-Api/src/import/sctvRequestService.php</file>
         </group>
     </open-files>
 </project-private>

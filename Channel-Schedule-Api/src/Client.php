@@ -108,3 +108,7 @@ function getSCTV($channelExternalId, $date) {
     $body = $response->getBody();
     return $response->getBody()->getContents();
 }
+
+function request($channelExternalId, $date) {
+    return getSCTV($channelExternalId, $date);
+}
