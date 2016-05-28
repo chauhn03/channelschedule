@@ -41,7 +41,7 @@ class sctvRequestService implements iHttpClient {
             '__VIEWSTATEGENERATOR' => 'CA0B0334',
             '__EVENTVALIDATION' => '/wEWLgLN25ePCALcktymCQLEs6DQDQK8j+fPBwKs4M2hCwKy4M2hCwKx4M2hCwLQwsfqAwK34M2hCwK24M2hCwK14M2hCwKk4M2hCwKr4M2hCwKz4LWiCwK14KmiCwK24IGiCwK24IWiCwKMs8XrCQKx4LWiCwKz4I2iCwLG5oG2DgKz4M2hCwLQwtvqAwLaga2BBQLQws/qAwKs4M2hCwKs4M2hCwL4mOiAAgKs4M2hCwKw4OGhCwKs4M2hCwKx4O2hCwK24LmiCwK34OGhCwKr4O2hCwLt6/HfDQKk4OGhCwKw4I2iCwK14I2iCwK14LWiCwK34KmiCwK14IGiCwK34O2hCwKk4IWiCwKk4IGiCwKr4IGiC2jN5c3n2q8PoQ5FwKEv4BtG3Wr+ZpJovbyofMF1SBBF',
             'ctl00$ContentPlaceHolder1$ctl00$ctl01$ddlChannel' => $channelExternalId,
-            'ctl00$ContentPlaceHolder1$ctl00$ctl01$sDate' => $date,
+            'ctl00$ContentPlaceHolder1$ctl00$ctl01$sDate$dateInput' => $date,
             '__ASYNCPOST' => 'true',
             'RadAJAXControlID' => 'ctl00_ContentPlaceHolder1_ctl00_ctl01_RadAjaxManager1'
         ];
