@@ -12,6 +12,13 @@
  * @author chau.hoang
  */
 class schedule {
+
     public $Id;
     public $Date;
+    public $StartTime;
+    public $ChannelId;
+    public $Showing;
+    public $EndTime;
+    public $Programme;
+
 }

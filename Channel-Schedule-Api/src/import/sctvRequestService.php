@@ -11,6 +11,7 @@
  *
  * @author chau.hoang
  */
+use GuzzleHttp\Client;
 class sctvRequestService implements iHttpClient {
 
     private function getSCTVHeader() {
@@ -49,14 +50,15 @@ class sctvRequestService implements iHttpClient {
     public function request($channelId, $date) {
         $client = new Client();
         $header = getSCTVHeader();
-        $formParams = getSCTVFormParams($channelExternalId, $date);
+        $formParams = getSCTVFormParams($channelId, $date);
         $response = $client->request('POST', 'http://www.sctv.com.vn/lich-phat-song.html', [
             'headers' => $header,
             'form_params' => $formParams
         ]);
 
         $html = $response->getBody()->getContents();
-        return $this->getSchedulesFromHtml($html);
+        return $html;
+//        return $this->getSchedulesFromHtml($html);
     }
 
     private function getSchedulesFromHtml($html) {

@@ -1,6 +1,6 @@
 <?php
 
-function getElementsByClass(&$parentNode, $tagName, $className) {
+function getElementsByClass($parentNode, $tagName, $className) {
     $nodes = array();
 
     $childNodeList = $parentNode->getElementsByTagName($tagName);

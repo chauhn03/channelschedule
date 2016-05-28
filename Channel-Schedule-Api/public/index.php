@@ -31,12 +31,18 @@ require __DIR__ . '/../src/middleware.php';
 require __DIR__ . '/../src/routes.php';
 
 require __DIR__ . '/../vendor/notorm-master/notorm-master/NotORM.php';
-require __DIR__ . '/../src/services/carsService.php';
+require __DIR__ . '/../src/api/carsService.php';
 require __DIR__ . '/../src/Client.php';
 require __DIR__ . '/../src/HTMLExtract.php';
+
 require __DIR__ . '/../src/models/channel.php';
-require __DIR__ . '/../src/services/channelsService.php';
+require __DIR__ . '/../src/models/schedule.php';
+
+require __DIR__ . '/../src/repositories/channelsService.php';
+require __DIR__ . '/../src/repositories/schedulesRepository.php';
+
 require __DIR__ . '/../src/import/iHttpClient.php';
+require __DIR__ . '/../src/import/sctvRequestService.php';
 require __DIR__ . '/../src/import/sctv.php';
 
 $dbhost = 'localhost';
@@ -76,19 +82,21 @@ $app->get('/channel/insert', function(Request $request, Response $response) {
     echo $response->getStatusCode();
 });
 
-$app->get('/foo/bar', function(Request $request, Response $response) {
-    $html = getSCTV(16, '2016-05-26');
-//    $html = (string) $response->getBody()->getContents();
+$app->get('/schedules/import', function(Request $request, Response $response) {
+    global $db;
+    $sctvRequestService = new sctvRequestService();
 
-    $doc = new DOMDocument();
-    $doc->loadHTML('<meta http-equiv="content-type" content="text/html; charset=utf-8">' . $html);
-    $contentNode = $doc->getElementById('ctl00_ContentPlaceHolder1_ctl00_ctl01_RadAjaxPanel2');
-    $tableScheduleNodes = getElementsByClass($contentNode, 'table', 'table');
-    $tableScheduleNode = $tableScheduleNodes[0];
-    $tds = $tableScheduleNode->getElementsByTagName('td');
-    foreach ($tds as $td) {
-        echo $td->textContent . '; ';
-    }
+    $importSctv = new SCTV($db, $sctvRequestService);
+    $importSctv->importSchedule(2, '2016-05-29');
+});
+
+$app->get('/schedules/all', function(Request $request, Response $response) {
+    global $db;
+    $schedulesRepository = new schedulesRepository($db);
+    $schedules = $schedulesRepository->getAll();
+
+    $response->withHeader("Content-Type", "application/json");
+    echo json_encode($schedules, JSON_FORCE_OBJECT);
 });
 // Run app
 $app->run();
