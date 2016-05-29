@@ -32,7 +32,7 @@ require __DIR__ . '/../src/routes.php';
 
 require __DIR__ . '/../vendor/notorm-master/notorm-master/NotORM.php';
 require __DIR__ . '/../src/api/carsService.php';
-require __DIR__ . '/../src/Client.php';
+//require __DIR__ . '/../src/Client.php';
 require __DIR__ . '/../src/HTMLExtract.php';
 
 require __DIR__ . '/../src/models/channel.php';
@@ -87,7 +87,9 @@ $app->get('/schedules/import', function(Request $request, Response $response) {
     $sctvRequestService = new sctvRequestService();
 
     $importSctv = new SCTV($db, $sctvRequestService);
-    $importSctv->importSchedule(2, '2016-05-29');
+    $stringFormatDate = date('Y-m-d');
+    $date = date_create($stringFormatDate);
+    $importSctv->importSchedule(16, $date);
 });
 
 $app->get('/schedules/all', function(Request $request, Response $response) {
@@ -96,7 +98,7 @@ $app->get('/schedules/all', function(Request $request, Response $response) {
     $schedules = $schedulesRepository->getAll();
 
     $response->withHeader("Content-Type", "application/json");
-    echo json_encode($schedules, JSON_FORCE_OBJECT);
+    echo json_encode($schedules, JSON_FORCE_OBJECT);       
 });
 // Run app
 $app->run();

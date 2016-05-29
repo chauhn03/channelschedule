@@ -18,7 +18,6 @@ class schedule {
     public $StartTime;
     public $ChannelId;
     public $Showing;
-    public $EndTime;
     public $Programme;
 
 }

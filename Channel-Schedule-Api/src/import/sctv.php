@@ -27,10 +27,10 @@ class SCTV {
     function importSchedule($channelId, $date) {
         $html = $this->httpClient->request($channelId, $date);
         $schedules = $this->readHtml($html, $channelId, $date);
-        foreach ($schedules as $schedule) {
+//        foreach ($schedules as $schedule) {
 //            var_dump($schedule);
-        }
-        
+//        }
+//        
         $this->schedulesRepository->insert($schedules);
     }
 

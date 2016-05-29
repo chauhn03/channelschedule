@@ -29,9 +29,7 @@ class schedulesRepository {
             $arraySchedules[] = array(
                 "ChannelId" => $data->ChannelId,
                 "Date" => $data->Date,
-                "EndTime" => $data->EndTime,
                 "Programme" => $data->Programme,
-                "Showing" => $data->Showing,
                 "StartTime" => $data->StartTime
             );
         }
