@@ -30,9 +30,11 @@ require __DIR__ . '/../src/middleware.php';
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
+require __DIR__ . '/config.php';
 require __DIR__ . '/../vendor/notorm-master/notorm-master/NotORM.php';
 require __DIR__ . '/../src/api/carsService.php';
 //require __DIR__ . '/../src/Client.php';
+require __DIR__ . '/../src/Timer.php';
 require __DIR__ . '/../src/HTMLExtract.php';
 
 require __DIR__ . '/../src/models/channel.php';
@@ -45,13 +47,6 @@ require __DIR__ . '/../src/import/iHttpClient.php';
 require __DIR__ . '/../src/import/sctvRequestService.php';
 require __DIR__ . '/../src/import/sctv.php';
 
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$dbname = 'schedulechannel';
-$dbmethod = 'mysql:dbname=';
-
-$dsn = $dbmethod . $dbname;
 $pdo = new PDO($dsn, $dbuser, $dbpass);
 $db = new NotORM($pdo);
 
@@ -89,6 +84,8 @@ $app->get('/schedules/import', function(Request $request, Response $response) {
     $importSctv = new SCTV($db, $sctvRequestService);
     $stringFormatDate = date('Y-m-d');
     $date = date_create($stringFormatDate);
+    
+//    $importSctv->importSchedules();
     $importSctv->importSchedule(16, $date);
 });
 
@@ -100,5 +97,6 @@ $app->get('/schedules/all', function(Request $request, Response $response) {
     $response->withHeader("Content-Type", "application/json");
     echo json_encode($schedules, JSON_FORCE_OBJECT);       
 });
+
 // Run app
 $app->run();
